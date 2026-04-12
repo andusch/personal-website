@@ -46,30 +46,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${lora.variable}`}>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                // Remove Grammarly attributes that cause hydration mismatches
-                const observer = new MutationObserver((mutations) => {
-                  mutations.forEach((mutation) => {
-                    if (mutation.type === 'attributes') {
-                      const attr = mutation.attributeName;
-                      if (attr && attr.startsWith('data-gr-') || attr.startsWith('data-new-gr-')) {
-                        document.body.removeAttribute(attr);
-                      }
-                    }
-                  });
-                });
-                if (typeof window !== 'undefined') {
-                  observer.observe(document.body, { attributes: true });
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
       <body className="min-h-screen" suppressHydrationWarning>
         <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
           <Navbar />
