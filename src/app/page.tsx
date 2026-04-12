@@ -1,26 +1,25 @@
 export default function Home() {
   return (
-    <main className="max-w-2xl mx-auto px-6 py-12 md:py-24 font-serif">
-      <h1 className="text-3xl font-bold mb-8 font-sans tracking-tight">
-        Ioan-Alexandru Scheușan
+    <main className="max-w-2xl mx-auto px-6 pb-24 page-fade font-serif">
+      <h1 className="text-4xl font-bold font-sans mb-12 tracking-tighter">
+        Ioan-Alexandru Scheusan
       </h1>
       
-      <section className="space-y-6 text-lg leading-relaxed text-gray-800">
+      <div className="space-y-8 text-[19px] leading-[1.6] text-gray-800">
         <p>
-          I build systems that solve real problems for real people. 
-          I’m not interested in coding for its own sake—I’m interested in building 
-          infrastructure that actually runs in the world and makes a difference.
+          I am a builder focused on systems that solve real problems. 
+          I sit at the intersection of <span className="text-black font-medium italic">computer science, physics, philosophy, and entrepreneurship.</span>
         </p>
 
-        <div className="pt-8 font-sans text-sm uppercase tracking-widest text-gray-500">
-          Current Focus
+        <hr className="border-gray-100 my-12" />
+
+        <div className="font-sans text-[12px] uppercase tracking-[0.2em] text-gray-400 mb-4">
+          Status
         </div>
-        <p>
-          Aspiring to study Computer Science at <strong>NUS, NTU, CUHK or HKUST</strong>, with a long-term 
-          trajectory towards a PhD at Stanford or Berkeley focusing on 
-          distributed systems and AI infrastructure.
+        <p className="text-base font-sans">
+          Senior High Schooler • Aspiring CS @ NUS/NTU/CUHK/HKUST
         </p>
-      </section>
+      </div>
     </main>
   );
 }

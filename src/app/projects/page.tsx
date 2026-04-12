@@ -1,6 +1,5 @@
 import { getProjects } from '@/lib/notion';
 
-// CRITICAL: Ensure 'default' is included here
 export default async function ProjectsPage() {
   const projects = await getProjects();
 
@@ -14,7 +13,7 @@ export default async function ProjectsPage() {
         )}
         
         {projects.map((project: any) => {
-          // Check if properties exist to avoid undefined errors
+          
           const name = project.properties.Name?.title[0]?.plain_text || "Untitled Project";
           const desc = project.properties.Description?.rich_text[0]?.plain_text || "";
           const year = project.properties.Year?.number;
