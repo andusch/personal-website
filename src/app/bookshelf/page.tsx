@@ -16,8 +16,9 @@ const fallbackBooks = [
     category: "Personal Development",
     rating: 5,
     quote: "You can make more friends in two months by becoming interested in other people than you can in two years by trying to get other people interested in you.",
-    cover: "https://covers.openlibrary.org/b/id/15200981-L.jpg"
-  }
+    cover: "https://covers.openlibrary.org/b/id/15200981-L.jpg",
+    status: "Finished",
+  },
 ];
 
 function StarRating({ rating }: { rating: number }) {
@@ -37,6 +38,26 @@ function StarRating({ rating }: { rating: number }) {
         </svg>
       ))}
     </div>
+  );
+}
+
+function StatusBadge({ status }: { status: string }) {
+  const styles = {
+    "To-Read": "bg-[#f5f5f5] text-[#666] border-[#e5e5e5]",
+    "Reading": "bg-[#1a1a1a] text-[#fafafa] border-[#1a1a1a]",
+    "Finished": "bg-[#fafafa] text-[#1a1a1a] border-[#1a1a1a]",
+  };
+
+  const labels = {
+    "To-Read": "To Read",
+    "Reading": "Currently Reading",
+    "Finished": "Finished",
+  };
+
+  return (
+    <span className={`text-xs px-2 py-1 rounded border ${styles[status as keyof typeof styles] || styles["To-Read"]}`}>
+      {labels[status as keyof typeof labels] || status}
+    </span>
   );
 }
 
@@ -77,29 +98,37 @@ function BookCard({ book }: { book: any }) {
             </p>
           </blockquote>
         )}
+
+        {book.status === "Reading" && (
+          <div className="mt-3 flex items-center gap-2 text-sm text-[#666]">
+            <div className="w-2 h-2 rounded-full bg-[#1a1a1a] animate-pulse" />
+            <span>Currently reading</span>
+          </div>
+        )}
+        
       </div>
     </article>
   );
 }
 
 export default async function BookshelfPage() {
+
   let books = fallbackBooks;
+
   try {
+
     const notionBooks = await getBookshelf();
-    if (notionBooks && notionBooks.length > 0) {
-      books = notionBooks.map((book: any) => ({
-        id: book.id,
-        title: book.properties?.Name?.title?.[0]?.plain_text || "Untitled",
-        author: book.properties?.Author?.rich_text?.[0]?.plain_text || "Unknown",
-        category: book.properties?.Category?.select?.name || "Uncategorized",
-        rating: book.properties?.Rating?.number || 0,
-        quote: book.properties?.Quote?.rich_text?.[0]?.plain_text || "",
-        cover: book.properties?.Cover?.url || "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=300&h=450&fit=crop",
-      }));
+    if(notionBooks && notionBooks.length > 0) {
+      books = notionBooks;
     }
+
   } catch (error) {
     console.log("Using fallback book data");
   }
+
+  const currentlyReading = books.filter(b => b.status === "Reading");
+  const finished = books.filter(b => b.status === "Finished");
+  const toRead = books.filter(b => b.status === "To-Read");
 
   return (
     <div className="space-y-12 animate-slide-up">
@@ -113,20 +142,67 @@ export default async function BookshelfPage() {
         </p>
       </section>
 
-      {/* Books Grid */}
-      <section className="grid gap-6">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </section>
+      {/* Currently Reading Section */}
+      {currentlyReading.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#666] flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#1a1a1a] animate-pulse" />
+            Currently Reading
+          </h2>
+          <div className="grid gap-4">
+            {currentlyReading.map((book) => (
+              <BookCard key={book.id} book={book} />
+            ))}
+          </div>
+        </section>
+      )}
 
-      {/* Reading Stats / Footer */}
-      <section className="pt-8 border-t border-[#e5e5e5] text-sm text-[#666]">
-        <p>
-          Currently reading <strong className="text-[#1a1a1a]">{books.length}</strong> books across{" "}
-          <strong className="text-[#1a1a1a]">{new Set(books.map(b => b.category)).size}</strong> categories.
-        </p>
+      {/* To Read Section */}
+      {toRead.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#666]">
+            To Read ({toRead.length})
+          </h2>
+          <div className="grid gap-4">
+            {toRead.map((book) => (
+              <BookCard key={book.id} book={book} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Finished Section */}
+      {finished.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#666]">
+            Finished ({finished.length})
+          </h2>
+          <div className="grid gap-4">
+            {finished.map((book) => (
+              <BookCard key={book.id} book={book} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Reading Stats */}
+      <section className="pt-8 border-t border-[#e5e5e5]">
+        <div className="grid grid-cols-3 gap-4 text-center">
+          <div className="p-4 rounded-lg bg-[#f5f5f5]">
+            <div className="text-2xl font-bold text-[#1a1a1a]">{currentlyReading.length}</div>
+            <div className="text-xs text-[#666] uppercase tracking-wider mt-1">Reading</div>
+          </div>
+          <div className="p-4 rounded-lg bg-[#1a1a1a] text-[#fafafa]">
+            <div className="text-2xl font-bold">{finished.length}</div>
+            <div className="text-xs opacity-70 uppercase tracking-wider mt-1">Finished</div>
+          </div>
+          <div className="p-4 rounded-lg bg-[#f5f5f5]">
+            <div className="text-2xl font-bold text-[#1a1a1a]">{toRead.length}</div>
+            <div className="text-xs text-[#666] uppercase tracking-wider mt-1">To Read</div>
+          </div>
+        </div>
       </section>
     </div>
   );
+
 }

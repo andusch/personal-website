@@ -27,7 +27,13 @@ export default function Home() {
       <section className="space-y-6 animate-slide-up stagger-1">
         <div className="prose-custom max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
           <p>
-            I&apos;m currently a senior high school student at Moisil
+            I&apos;m currently a senior high school student at {" "}
+            <a
+              href="https://info.tm.edu.ro"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover text-[#1a1a1a] font-medium"
+              >Moisil</a>
           </p>
           
           <p>
@@ -46,15 +52,15 @@ export default function Home() {
         <ul className="space-y-3 text-[#1a1a1a]">
           <li className="flex items-start gap-3">
             <span className="text-[#999] mt-1.5">•</span>
-            <span>Researching Apache Spark</span>
+            <span>Digging into {" "} <a href="https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf" target="_blank" rel="noopener noreferrer" className="link-hover text-[#1a1a1a] font-medium">MapReduce</a>  and {" "} <a href="https://www.usenix.org/legacy/event/hotcloud10/tech/full_papers/Zaharia.pdf" target="_blank" rel="noopener noreferrer" className="link-hover text-[#1a1a1a] font-medium">Apache Spark</a></span>
           </li>
           <li className="flex items-start gap-3">
             <span className="text-[#999] mt-1.5">•</span>
-            <span>Building [Distributed Key-Value Store]</span>
+            <span>Building a <a href="https://github.com/andusch/distributed-key-value-store" target="_blank" rel="noopener noreferrer" className="link-hover text-[#1a1a1a] font-medium">Distributed Key-Value Store in Go</a></span>
           </li>
           <li className="flex items-start gap-3">
             <span className="text-[#999] mt-1.5">•</span>
-            <span>Reading <em>The Beginning of Infinity</em> by David Deutsch</span>
+            <span>Reading <em>The Idiot</em> by Fyodor Dostoevsky</span>
           </li>
         </ul>
       </section>
