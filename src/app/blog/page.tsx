@@ -1,13 +1,15 @@
 import { Metadata } from "next";
-import { getPublishedPosts } from "@/lib/notion";
 import Link from "next/link";
+
+import { formatDate } from "@/utils/helper";
+import { getPublishedPosts } from "@/lib/notion";
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "Thoughts on AI, machine learning, robotics, and the intersection of technology and philosophy.",
 };
 
-// Fallback posts if Notion isn't connected
+// if notion isn't connected
 const fallbackPosts = [
   {
     id: "1",
@@ -17,19 +19,6 @@ const fallbackPosts = [
     excerpt: "Why robots need bodies to truly understand the world...",
   },
 ];
-
-function formatDate(dateString: string) {
-  try {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  } catch {
-    return dateString;
-  }
-}
 
 function PostCard({ post }: { post: any }) {
   return (
@@ -73,14 +62,14 @@ export default async function BlogPage() {
   
   try {
     const notionPosts = await getPublishedPosts();
-    console.log("Blog page received posts:", notionPosts.length);
+    // console.log("Blog page received posts:", notionPosts.length);
     
     if (notionPosts && notionPosts.length > 0) {
       posts = notionPosts;
       // Log first post for debugging
-      console.log("First post:", JSON.stringify(notionPosts[0], null, 2));
+      // console.log("First post:", JSON.stringify(notionPosts[0], null, 2));
     } else {
-      console.log("No posts from Notion, using fallback");
+      // console.log("No posts from Notion, using fallback");
     }
   } catch (error) {
     console.log("Error fetching posts, using fallback:", error);

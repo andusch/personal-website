@@ -32,7 +32,7 @@ export default async function ProjectsPage() {
   
   try {
     const notionProjects = await getProjects();
-    console.log("Projects from Notion:", notionProjects);
+    // console.log("Projects from Notion:", notionProjects);
     
     if (notionProjects && notionProjects.length > 0) {
       // getProjects() already returns mapped data with title, description, etc.

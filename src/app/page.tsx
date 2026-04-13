@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 
+import GitHubContributions from "@/components/GitHubContributions";
+
 export const metadata: Metadata = {
   title: "About",
 };
@@ -10,7 +12,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className="space-y-8 animate-slide-up">
         <div className="space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#1a1a1a]">
+          <h1 className="text-4xl md:text-
+          5xl font-bold tracking-tight text-[#1a1a1a]">
             Ioan-Alexandru Scheusan
           </h1>
           <p className="text-lg md:text-xl text-[#666] font-medium">
@@ -23,17 +26,55 @@ export default function Home() {
         </p>
       </section>
 
+      {/* GitHub Section */}
+      <section className="animate-slide-up stagger-1">
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-[#666] mb-4">
+          GitHub Activity
+        </h2>
+        <GitHubContributions />
+        <p className="mt-3 text-sm text-[#666]">
+          <a href="https://github.com/andusch" target="_blank" rel="noopener norefferer" className="link-hover text-[#1a1a1a]">
+            View profile →
+          </a>
+        </p>
+      </section>
+
       {/* Bio Section */}
       <section className="space-y-6 animate-slide-up stagger-1">
         <div className="prose-custom max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
           <p>
-            I&apos;m currently a senior high school student at {" "}
+            I&apos;m currently a senior high school student at {" "} 
             <a
               href="https://info.tm.edu.ro"
               target="_blank"
               rel="noopener noreferrer"
               className="link-hover text-[#1a1a1a] font-medium"
-              >Moisil</a>
+              >Liceul Teoretic "Grigore Moisil" Timisoara </a>.
+               Hopefully pursuing a Computer Science / Computer Engineering bachelor at {" "}
+              <a
+              href="https://nus.edu.sg/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover text-[#1a1a1a] font-medium"
+              >NUS</a>, {" "}
+              <a
+              href="https://www.ntu.edu.sg/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover text-[#1a1a1a] font-medium"
+              >NTU</a>, {" "}
+              <a
+              href="https://www.cuhk.edu.hk/english/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover text-[#1a1a1a] font-medium"
+              >CUHK</a>, or {" "}
+              <a
+              href="https://hkust.edu.hk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover text-[#1a1a1a] font-medium"
+              >HKUST</a>
           </p>
           
           <p>
