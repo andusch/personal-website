@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
 import { Inter, Lora} from 'next/font/google'
+
 import './globals.css'
 import Navbar from '@/components/Navbar';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -46,13 +48,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${lora.variable}`}>
-      <body className="min-h-screen" suppressHydrationWarning>
-        <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
-          <Navbar />
-          <main className="page-fade">
-            {children}
-          </main>
-        </div>
+      {/* <body className="min-h-screen bg-[#fafafa] text-[#1a1a1a] dark:bg-[#1a1a1a] dark:text-[#fafafa] transition-colors duration-300" suppressHydrationWarning> */}
+      <body className="min-h-screen bg-background text-foreground transition-colors duration-300" suppressHydrationWarning>
+        <ThemeProvider>
+          <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
+            <Navbar />
+            <main className="page-fade">
+              {children}
+            </main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

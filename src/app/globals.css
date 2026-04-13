@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
   --color-background: #fafafa;
   --color-foreground: #1a1a1a;
@@ -19,7 +21,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-border, currentColor);
+    border-color: var(--color-border);
   }
 }
 
@@ -33,6 +35,17 @@ body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
+}
+
+/* Dark mode overrides */
+.dark body {
+  background-color: #1a1a1a;
+  color: #fafafa;
+}
+
+.dark ::selection {
+  background-color: #fafafa;
+  color: #1a1a1a;
 }
 
 ::selection {
@@ -88,6 +101,10 @@ body {
   margin-bottom: 1.5rem;
   font-size: 1.125rem;
   line-height: 2rem;
+}
+
+.dark .prose-custom {
+  color: #e5e5e5;
 }
 
 /* Link hover effect */

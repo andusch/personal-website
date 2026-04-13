@@ -1,18 +1,18 @@
 "use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
-  { path: "/", label: "About"},
-  { path: "/projects", label: "Projects"},
+  { path: "/", label: "About" },
+  { path: "/projects", label: "Projects" },
   { path: "/blog", label: "Blog" },
   { path: "/bookshelf", label: "Bookshelf" },
 ];
 
 export default function Navbar() {
-
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -21,7 +21,7 @@ export default function Navbar() {
       return pathname === "/";
     }
     return pathname.startsWith(path);
-  }
+  };
 
   return (
     <header className="mb-16 md:mb-24">
@@ -29,61 +29,66 @@ export default function Navbar() {
         {/* Logo / Name */}
         <Link 
           href="/" 
-          className="text-lg font-semibold tracking-tight text-[#1a1a1a] hover:opacity-70 transition-opacity"
+          className="text-lg font-semibold tracking-tight text-[#1a1a1a] dark:text-[#fff] hover:opacity-70 transition-opacity"
         >
           .andu
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
             <Link
               key={item.path}
               href={item.path}
               className={`text-sm transition-colors duration-200 ${
                 isActive(item.path)
-                  ? "text-[#1a1a1a] font-medium"
-                  : "text-[#666] hover:text-[#1a1a1a]"
+                  ? "text-[#1a1a1a] dark:text-[#fafafa] font-medium"
+                  : "text-[#666] dark:text-[#999] hover:text-[#1a1a1a] dark:hover:text-[#fafafa]"
               }`}
             >
               {item.label}
             </Link>
           ))}
+          <div className="w-px h-4 bg-[#e5e5e5] dark:bg-[#666] mx-2" />
+          <ThemeToggle />
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-[#1a1a1a]"
-          aria-label="Toggle menu"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
+        {/* Mobile: Theme Toggle + Menu Button */}
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-[#1a1a1a] dark:text-[#fafafa]"
+            aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? (
-              <>
-                <path d="M4 4L16 16" />
-                <path d="M16 4L4 16" />
-              </>
-            ) : (
-              <>
-                <path d="M2 5H18" />
-                <path d="M2 10H18" />
-                <path d="M2 15H18" />
-              </>
-            )}
-          </svg>
-        </button>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
+              {mobileMenuOpen ? (
+                <>
+                  <path d="M4 4L16 16" />
+                  <path d="M16 4L4 16" />
+                </>
+              ) : (
+                <>
+                  <path d="M2 5H18" />
+                  <path d="M2 10H18" />
+                  <path d="M2 15H18" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-6 pb-6 border-b border-[#e5e5e5]">
+        <div className="md:hidden mt-6 pb-6 border-b border-[#e5e5e5] dark:border-[#333]">
           <div className="flex flex-col gap-4">
             {navItems.map((item) => (
               <Link
@@ -92,8 +97,8 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`text-base ${
                   isActive(item.path)
-                    ? "text-[#1a1a1a] font-medium"
-                    : "text-[#666]"
+                    ? "text-[#1a1a1a] dark:text-[#fafafa] font-medium"
+                    : "text-[#666] dark:text-[#999]"
                 }`}
               >
                 {item.label}
@@ -104,5 +109,4 @@ export default function Navbar() {
       )}
     </header>
   );
-
 }

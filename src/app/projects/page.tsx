@@ -47,10 +47,10 @@ export default async function ProjectsPage() {
     <div className="space-y-12 animate-slide-up">
       {/* Header */}
       <section className="space-y-4">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#1a1a1a]">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#1a1a1a] dark:text-[#fafafa]">
           Projects
         </h1>
-        <p className="text-lg text-[#666] max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
+        <p className="text-lg text-[#666] dark:text-[#999] max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
           A collection of projects spanning AI, robotics, web development, and hardware. 
           Each one taught me something new about building things that matter.
         </p>
@@ -66,21 +66,21 @@ export default async function ProjectsPage() {
         {projects.map((project) => (
           <article 
             key={project.id} 
-            className="group p-6 md:p-8 rounded-lg bg-white border border-[#e5e5e5] hover:border-[#ccc] transition-all hover:shadow-sm"
+            className="group p-6 md:p-8 rounded-lg bg-white dark:bg-[#1a1a1a] border border-[#e5e5e5] dark:border-[#333] hover:border-[#ccc] dark:hover:border-[#555] transition-all hover:shadow-sm"
           >
             <div className="flex flex-col h-full">
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h2 className="text-xl font-semibold text-[#1a1a1a] mb-1 group-hover:text-[#444] transition-colors">
+                  <h2 className="text-xl font-semibold text-[#1a1a1a] dark:text-[#fafafa] mb-1 group-hover:text-[#444] transition-colors">
                     {project.title}
                   </h2>
-                  <span className="text-sm text-[#999]">{project.year}</span>
+                  <span className="text-sm text-[#999] dark:text-[#666]">{project.year}</span>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-[#666] leading-relaxed mb-6 flex-grow" style={{ fontFamily: 'var(--font-lora), serif' }}>
+              <p className="text-[#666] dark:text-[#999] leading-relaxed mb-6 flex-grow" style={{ fontFamily: 'var(--font-lora), serif' }}>
                 {project.description}
               </p>
 
@@ -89,7 +89,7 @@ export default async function ProjectsPage() {
                 {project.tags.map((tag: string) => (
                   <span 
                     key={tag}
-                    className="text-xs px-2.5 py-1 bg-[#f5f5f5] text-[#666] rounded-full border border-[#e5e5e5]"
+                    className="text-xs px-2.5 py-1 bg-[#f5f5f5] dark:bg-[#2a2a2a] text-[#666] dark:text-[#999] rounded-full border border-[#e5e5e5] dark:border-[#333]"
                   >
                     {tag}
                   </span>
@@ -102,7 +102,7 @@ export default async function ProjectsPage() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#1a1a1a] hover:text-[#666] transition-colors link-hover"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#1a1a1a] dark:text-[#fafafa] hover:text-[#666] transition-colors link-hover"
                 >
                   View project
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -117,9 +117,9 @@ export default async function ProjectsPage() {
 
       {/* CTA */}
       <section className="pt-8 border-t border-[#e5e5e5] text-center">
-        <p className="text-[#666]" style={{ fontFamily: 'var(--font-lora), serif' }}>
+        <p className="text-[#666] dark:text-[#999]" style={{ fontFamily: 'var(--font-lora), serif' }}>
           Interested in collaborating?{" "}
-          <a href="mailto:your.email@example.com" className="text-[#1a1a1a] underline underline-offset-4 hover:text-[#666] transition-colors">
+          <a href="mailto:your.email@example.com" className="text-[#1a1a1a] dark:text-[#fafafa] underline underline-offset-4 hover:text-[#666] transition-colors">
             Let&apos;s talk
           </a>
           .

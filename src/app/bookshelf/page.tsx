@@ -23,7 +23,7 @@ const fallbackBooks = [
 
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="flex gap-0.5 text-[#1a1a1a]">
+    <div className="flex gap-0.5 text-[#1a1a1a] dark:text-[#fafafa]">
       {[...Array(5)].map((_, i) => (
         <svg
           key={i}
@@ -43,9 +43,9 @@ function StarRating({ rating }: { rating: number }) {
 
 function StatusBadge({ status }: { status: string }) {
   const styles = {
-    "To-Read": "bg-[#f5f5f5] text-[#666] border-[#e5e5e5]",
-    "Reading": "bg-[#1a1a1a] text-[#fafafa] border-[#1a1a1a]",
-    "Finished": "bg-[#fafafa] text-[#1a1a1a] border-[#1a1a1a]",
+    "To-Read": "bg-[#f5f5f5] text-[#666] dark:text-[#999] border-[#e5e5e5]",
+    "Reading": "bg-[#1a1a1a] text-[#fafafa] dark:text-[#1a1a1a] border-[#1a1a1a]",
+    "Finished": "bg-[#fafafa] text-[#1a1a1a] dark:text-[#fafafa] border-[#1a1a1a]",
   };
 
   const labels = {
@@ -63,8 +63,8 @@ function StatusBadge({ status }: { status: string }) {
 
 function BookCard({ book }: { book: any }) {
   return (
-    <article className="group flex gap-6 p-6 rounded-lg bg-white border border-[#e5e5e5] hover:border-[#ccc] transition-colors">
-      <div className="flex-shrink-0 w-24 md:w-32 aspect-[2/3] relative overflow-hidden rounded bg-[#f5f5f5]">
+    <article className="group flex gap-6 p-6 rounded-lg bg-white dark:bg-[#1a1a1a] border border-[#e5e5e5] dark:border-[#333] hover:border-[#ccc] dark:hover:border-[#555] transition-colors">
+      <div className="flex-shrink-0 w-24 md:w-32 aspect-[2/3] relative overflow-hidden rounded bg-[#f5f5f5] dark:bg-[#2a2a2a]">
         <Image
           src={book.cover}
           alt={`${book.title} cover`}
@@ -77,15 +77,15 @@ function BookCard({ book }: { book: any }) {
       <div className="flex-1 min-w-0 flex flex-col">
         <div className="flex items-start justify-between gap-4 mb-2">
           <div>
-            <h2 className="text-lg font-semibold text-[#1a1a1a] leading-tight mb-1">
+            <h2 className="text-lg font-semibold text-[#1a1a1a] dark:text-[#fafafa] leading-tight mb-1">
               {book.title}
             </h2>
-            <p className="text-sm text-[#666]">{book.author}</p>
+            <p className="text-sm text-[#666] dark:text-[#999]">{book.author}</p>
           </div>
         </div>
         
         <div className="flex items-center gap-3 mb-3">
-          <span className="text-xs px-2 py-1 bg-[#f5f5f5] text-[#666] rounded">
+          <span className="text-xs px-2 py-1 bg-[#f5f5f5] dark:bg-[#2a2a2a] text-[#666] dark:text-[#999] rounded">
             {book.category}
           </span>
           <StarRating rating={book.rating} />
@@ -93,14 +93,14 @@ function BookCard({ book }: { book: any }) {
         
         {book.quote && (
           <blockquote className="mt-auto">
-            <p className="text-sm text-[#444] italic leading-relaxed line-clamp-4" style={{ fontFamily: 'var(--font-lora), serif' }}>
+            <p className="text-sm text-[#444] dark:text-[#999] italic leading-relaxed line-clamp-4" style={{ fontFamily: 'var(--font-lora), serif' }}>
               &ldquo;{book.quote}&rdquo;
             </p>
           </blockquote>
         )}
 
         {book.status === "Reading" && (
-          <div className="mt-3 flex items-center gap-2 text-sm text-[#666]">
+          <div className="mt-3 flex items-center gap-2 text-sm text-[#666] dark:text-[#999]">
             <div className="w-2 h-2 rounded-full bg-[#1a1a1a] animate-pulse" />
             <span>Currently reading</span>
           </div>
@@ -134,10 +134,10 @@ export default async function BookshelfPage() {
     <div className="space-y-12 animate-slide-up">
       {/* Header */}
       <section className="space-y-4">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#1a1a1a]">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#1a1a1a] dark:text-[#fafafa]">
           My Bookshelf
         </h1>
-        <p className="text-lg text-[#666] max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
+        <p className="text-lg text-[#666] dark:text-[#999] max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
           A curated collection of books that have shaped my thinking and learning journey.
         </p>
       </section>
@@ -145,7 +145,7 @@ export default async function BookshelfPage() {
       {/* Currently Reading Section */}
       {currentlyReading.length > 0 && (
         <section className="space-y-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#666] flex items-center gap-2">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#666] dark:text-[#999] flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#1a1a1a] animate-pulse" />
             Currently Reading
           </h2>
@@ -160,7 +160,7 @@ export default async function BookshelfPage() {
       {/* To Read Section */}
       {toRead.length > 0 && (
         <section className="space-y-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#666]">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#666] dark:text-[#999]">
             To Read ({toRead.length})
           </h2>
           <div className="grid gap-4">
@@ -174,7 +174,7 @@ export default async function BookshelfPage() {
       {/* Finished Section */}
       {finished.length > 0 && (
         <section className="space-y-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#666]">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#666] dark:text-[#999]">
             Finished ({finished.length})
           </h2>
           <div className="grid gap-4">
@@ -186,19 +186,19 @@ export default async function BookshelfPage() {
       )}
 
       {/* Reading Stats */}
-      <section className="pt-8 border-t border-[#e5e5e5]">
+      <section className="pt-8 border-t border-[#e5e5e5] dark:border-[#333]">
         <div className="grid grid-cols-3 gap-4 text-center">
-          <div className="p-4 rounded-lg bg-[#f5f5f5]">
-            <div className="text-2xl font-bold text-[#1a1a1a]">{currentlyReading.length}</div>
-            <div className="text-xs text-[#666] uppercase tracking-wider mt-1">Reading</div>
+          <div className="p-4 rounded-lg bg-[#f5f5f5] dark:bg-[#2a2a2a]">
+            <div className="text-2xl font-bold text-[#1a1a1a] dark:text-[#fafafa]">{currentlyReading.length}</div>
+            <div className="text-xs text-[#666] dark:text-[#999] uppercase tracking-wider mt-1">Reading</div>
           </div>
-          <div className="p-4 rounded-lg bg-[#1a1a1a] text-[#fafafa]">
+          <div className="p-4 rounded-lg bg-[#1a1a1a] dark:bg-[#2a2a2a] text-[#fafafa]">
             <div className="text-2xl font-bold">{finished.length}</div>
             <div className="text-xs opacity-70 uppercase tracking-wider mt-1">Finished</div>
           </div>
-          <div className="p-4 rounded-lg bg-[#f5f5f5]">
-            <div className="text-2xl font-bold text-[#1a1a1a]">{toRead.length}</div>
-            <div className="text-xs text-[#666] uppercase tracking-wider mt-1">To Read</div>
+          <div className="p-4 rounded-lg bg-[#f5f5f5] dark:bg-[#2a2a2a]">
+            <div className="text-2xl font-bold text-[#1a1a1a] dark:text-[#fafafa]">{toRead.length}</div>
+            <div className="text-xs text-[#666] dark:text-[#999] uppercase tracking-wider mt-1">To Read</div>
           </div>
         </div>
       </section>

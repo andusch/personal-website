@@ -22,23 +22,23 @@ const fallbackPosts = [
 
 function PostCard({ post }: { post: any }) {
   return (
-    <article className="group py-8 border-b border-[#e5e5e5] last:border-0">
+    <article className="group py-8 border-b border-[#e5e5e5] dark:border-[#333] last:border-0">
       <Link href={`/blog/${post.slug}`} className="block space-y-3">
-        <div className="flex items-center gap-4 text-sm text-[#666]">
+        <div className="flex items-center gap-4 text-sm text-[#666] dark:text-[#999]">
           <time dateTime={post.date}>{formatDate(post.date)}</time>
         </div>
         
-        <h2 className="text-xl md:text-2xl font-semibold text-[#1a1a1a] group-hover:text-[#666] transition-colors">
+        <h2 className="text-xl md:text-2xl font-semibold text-[#1a1a1a] dark:text-[#fafafa] group-hover:text-[#666] transition-colors">
           {post.title}
         </h2>
         
         {post.excerpt && (
-          <p className="text-[#666] leading-relaxed max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
+          <p className="text-[#666] dark:text-[#999] leading-relaxed max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
             {post.excerpt}
           </p>
         )}
         
-        <div className="flex items-center gap-2 text-sm font-medium text-[#1a1a1a] pt-2">
+        <div className="flex items-center gap-2 text-sm font-medium text-[#1a1a1a] dark:text-[#fafafa] pt-2">
           <span>Read more</span>
           <svg 
             width="16" 
@@ -79,10 +79,10 @@ export default async function BlogPage() {
     <div className="space-y-12 animate-slide-up">
       {/* Header */}
       <section className="space-y-4">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#1a1a1a]">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#1a1a1a] dark:text-[#fafafa]">
           Blog
         </h1>
-        <p className="text-lg text-[#666] max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
+        <p className="text-lg text-[#666] dark:text-[#999] max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
           Thoughts on AI, machine learning, robotics, and the intersection of technology and philosophy.
         </p>
       </section>
