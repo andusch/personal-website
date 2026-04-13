@@ -110,12 +110,12 @@ export async function getPublishedPosts() : Promise<BlogPost[]> {
     const databaseId = process.env.NOTION_BLOG_DATABASE_ID as string;
     const response = await notion.databases.query({
       database_id: databaseId,
-      // filter: {
-      //   property: "Published",
-      //   checkbox: {
-      //     equals: true,
-      //   },
-      // },
+      filter: {
+        property: "Published",
+        checkbox: {
+          equals: true,
+        },
+      },
       sorts: [
         {
           property: "Date",
@@ -202,7 +202,7 @@ export async function getBookshelf() : Promise<Book[]> {
       database_id: databaseId,
       sorts: [
         { property: "Status", direction: "ascending" },
-        { property: "Rating", direction: "descending" },
+        { property: "Name", direction: "ascending" },
       ],
     });
 

@@ -43,7 +43,7 @@ export default function Home() {
       <section className="space-y-6 animate-slide-up stagger-1">
         <div className="prose-custom max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
           <p>
-            I&apos;m currently a senior high school student at {" "} 
+            I&apos;m a senior high school student at {" "} 
             <a
               href="https://info.tm.edu.ro"
               target="_blank"
