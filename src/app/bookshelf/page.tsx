@@ -41,26 +41,6 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-function StatusBadge({ status }: { status: string }) {
-  const styles = {
-    "To-Read": "bg-[#f5f5f5] text-[#666] dark:text-[#999] border-[#e5e5e5]",
-    "Reading": "bg-[#1a1a1a] text-[#fafafa] dark:text-[#1a1a1a] border-[#1a1a1a]",
-    "Finished": "bg-[#fafafa] text-[#1a1a1a] dark:text-[#fafafa] border-[#1a1a1a]",
-  };
-
-  const labels = {
-    "To-Read": "To Read",
-    "Reading": "Currently Reading",
-    "Finished": "Finished",
-  };
-
-  return (
-    <span className={`text-xs px-2 py-1 rounded border ${styles[status as keyof typeof styles] || styles["To-Read"]}`}>
-      {labels[status as keyof typeof labels] || status}
-    </span>
-  );
-}
-
 function BookCard({ book }: { book: any }) {
   return (
     <article className="group flex gap-6 p-6 rounded-lg bg-white dark:bg-[#1a1a1a] border border-[#e5e5e5] dark:border-[#333] hover:border-[#ccc] dark:hover:border-[#555] transition-colors">

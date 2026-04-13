@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { getProjects } from "@/lib/notion";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Projects",

@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 
 import { formatDate } from "@/utils/helper";
-import { getPublishedPosts, getPostContent } from "@/lib/notion";
+import { getPostContent } from "@/lib/notion";
 
 // Fallback content for demo
 const fallbackContent: Record<string, { title: string; content: string; date: string }> = {
