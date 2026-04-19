@@ -1,30 +1,50 @@
 import { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 
 import GitHubContributions from "@/components/GitHubContributions";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "Ioan-Alexandru Scheusan",
 };
 
 export default function Home() {
   return (
     <div className="space-y-16">
-      {/* Hero Section */}
-      <section className="space-y-8 animate-slide-up">
-        <div className="space-y-4">
-          <h1 className="text-4xl md:text-
-          5xl font-bold tracking-tight text-[#1a1a1a] dark:text-[#fafafa]">
-            Ioan-Alexandru Scheusan
-          </h1>
-          <p className="text-lg md:text-xl text-[#666] dark:text-[#999] font-medium">
-            Student.Researcher.Builder.
-          </p>
-        </div>
+      
+      <div className="flex flex-col md:flex-row gap-8">
+        {/* Hero Section */}
+        <section className="space-y-8 animate-slide-up">
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-
+              5xl font-bold tracking-tight text-[#1a1a1a] dark:text-[#fafafa]">
+              Ioan-Alexandru Scheusan
+            </h1>
+            <p className="text-lg md:text-xl text-[#666] dark:text-[#999] font-medium">
+              Student.Researcher.Builder.
+            </p>
+          </div>
 
-        <p className="text-xl md:text-2xl leading-relaxed text-[#1a1a1a] dark:text-[#fafafa] max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
-          I enjoy exploring the different field of computer science and physics, from gravity computing to computer networking, and I&apos;m always looking for new ways to apply my knowledge and skills to real-world problems.
-        </p>
-      </section>
+          <p className="text-xl md:text-2xl leading-relaxed text-[#1a1a1a] dark:text-[#fafafa] max-w-2xl" style={{ fontFamily: 'var(--font-lora), serif' }}>
+            I enjoy exploring the different fields of computer science and physics, from gravity computing to computer networking.
+          </p>
+        </section>
+
+        {/* Picture section */}
+        <section className="space-y-8 md:flex-row gap-8">
+          <div className="relative w-32 h-32 md:w-48 md:h-48">
+            <Image
+              src="/me.jpg"
+              alt="A picture of me"
+              fill
+              className="rounded-md object-cover shadow-lg"
+              priority
+              sizes="(max-width: 768px) 128px, 192px"
+            />
+          </div>
+        </section>
+      </div>
+      
 
       {/* GitHub Section */}
       <section className="animate-slide-up stagger-1">
@@ -45,7 +65,7 @@ export default function Home() {
           <p>
             I&apos;m a senior high school student at {" "} 
             <a
-              href="https://info.tm.edu.ro"
+              href="http://info.tm.edu.ro"
               target="_blank"
               rel="noopener noreferrer"
               className="link-hover text-[#1a1a1a] dark:text-[#fafafa] font-medium"
@@ -104,6 +124,22 @@ export default function Home() {
             <span>Reading <em>The Idiot</em> by Fyodor Dostoevsky</span>
           </li>
         </ul>
+      </section>
+
+      {/* Important Documents */}
+      <section className="animate-slide-up stagger-2">
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-[#666] dark:text-[#999] mb-4">
+          Important Documents
+        </h2>
+        <div className="flex flex-wrap gap-6">
+          <Link
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resume
+          </Link>
+        </div>
       </section>
 
       {/* Contact / Connect */}
