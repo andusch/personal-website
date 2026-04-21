@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 
+import PingDisplay from "@/components/PingDisplay";
 import GitHubContributions from "@/components/GitHubContributions";
 
 export const metadata: Metadata = {
@@ -173,6 +174,12 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* Footer Section */}
+      <footer className="mt-20 pt-8 border-t border-[#e5e5e5] dark:border-[#333] flex justify-between items-center">
+        <p className="text-xs text-[#999]">© 2026 .andu</p>
+        <PingDisplay />
+      </footer>
     </div>
   );
 }
