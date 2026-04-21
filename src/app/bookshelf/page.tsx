@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import { getBookshelf } from '@/lib/notion';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
+import { formatDate } from '@/utils/helper';
+import { Book } from '@/lib/notion';
 
 export const metadata: Metadata = {
   title: 'Bookshelf',
@@ -9,13 +11,14 @@ export const metadata: Metadata = {
 };
 
 const fallbackBooks = [
+  
   {
     id: '1',
     title: "How to Win Friends and Influence People",
     author: "Dale Carnegie",
     category: "Personal Development",
     rating: 5,
-    quote: "You can make more friends in two months by becoming interested in other people than you can in two years by trying to get other people interested in you.",
+    readDate: "",
     cover: "https://covers.openlibrary.org/b/id/15200981-L.jpg",
     status: "Finished",
   },
@@ -71,12 +74,12 @@ function BookCard({ book }: { book: any }) {
           <StarRating rating={book.rating} />
         </div>
         
-        {book.quote && (
-          <blockquote className="mt-auto">
-            <p className="text-sm text-[#444] dark:text-[#999] italic leading-relaxed line-clamp-4" style={{ fontFamily: 'var(--font-lora), serif' }}>
-              &ldquo;{book.quote}&rdquo;
+        {book.readDate && book.status === "Finished" && (
+          <div className="mt-auto">
+            <p className="text-xs text-[#999] dark:text-[#666] uppercase tracking-widest font-medium">
+              Read on {formatDate(book.readDate)}
             </p>
-          </blockquote>
+          </div>
         )}
 
         {book.status === "Reading" && (

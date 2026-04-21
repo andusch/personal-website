@@ -136,6 +136,7 @@ export default function Home() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
+            className="link-hover text-[#1a1a1a] dark:text-[#fafafa] hover:text-[#666] transition-colors"
           >
             Resume
           </Link>

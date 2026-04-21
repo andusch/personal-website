@@ -23,7 +23,7 @@ export interface Book {
   author: string;
   category: string;
   rating: number;
-  quote: string;
+  readDate: string | null;
   cover: string;
   status: "To-Read" | "Reading" | "Finished";
 }
@@ -215,6 +215,7 @@ export async function getBookshelf() : Promise<Book[]> {
       quote: page.properties?.Quote?.rich_text?.[0]?.plain_text || "",
       cover: page.properties?.Cover?.url || "https://via.placeholder.com/300x450/f5f5f5/666?text=No+Cover",
       status: page.properties?.Status?.select?.name || "To-Read",
+      readDate: page.properties?.["Read Date"]?.date?.start || null,
     }))
 
   } catch (error) {
