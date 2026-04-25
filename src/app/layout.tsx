@@ -75,6 +75,7 @@ export default function RootLayout({
           </div>
         </ThemeProvider>
       </body>
+      <Analytics />
     </html>
   );
 }
