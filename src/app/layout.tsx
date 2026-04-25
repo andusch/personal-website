@@ -5,6 +5,8 @@ import './globals.css'
 import Navbar from '@/components/Navbar';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
+import { Analytics } from "@vercel/analytics/next"
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
