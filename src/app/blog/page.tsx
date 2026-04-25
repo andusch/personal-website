@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
-import { formatDate } from "@/utils/helper";
+import { formatDate, formatDateWithDay } from "@/utils/helper";
 import type { BlogPost } from "@/lib/notion";
 import { getPublishedPosts } from "@/lib/notion";
 
@@ -27,7 +27,7 @@ function PostCard({ post }: { post: BlogPost }) {
     <article className="group py-8 border-b border-[#e5e5e5] dark:border-[#333] last:border-0">
       <Link href={`/blog/${post.slug}`} className="block space-y-3">
         <div className="flex items-center gap-4 text-sm text-[#666] dark:text-[#999]">
-          <time dateTime={post.date}>{formatDate(post.date)}</time>
+          <time dateTime={post.date}>{formatDateWithDay(post.date)}</time>
         </div>
         
         <h2 className="text-xl md:text-2xl font-semibold text-[#1a1a1a] dark:text-[#fafafa] group-hover:text-[#666] transition-colors">

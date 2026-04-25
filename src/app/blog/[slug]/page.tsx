@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 
-import { formatDate } from "@/utils/helper";
+import { formatDate, formatDateWithDay } from "@/utils/helper";
 import { getPostContent } from "@/lib/notion";
 
 // Fallback content for demo
@@ -121,7 +121,7 @@ export default async function BlogPost({ params }: Props) {
       {/* Header */}
       <header className="mb-12 space-y-4">
         <time dateTime={post.date} className="text-sm text-[#666] dark:text-[#999]">
-          {formatDate(post.date)}
+          {formatDateWithDay(post.date)}
         </time>
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#1a1a1a] dark:text-[#fafafa]">
           {post.title}
