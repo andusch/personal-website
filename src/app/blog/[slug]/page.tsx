@@ -79,8 +79,7 @@ export default async function BlogPost({ params }: Props) {
   
   try {
     post = await getPostContent(slug);
-  } catch (error) {
-    console.log("Notion fetch failed, using fallback");
+  } catch {
   }
 
   if (!post && fallbackContent[slug]) {
@@ -92,7 +91,7 @@ export default async function BlogPost({ params }: Props) {
     return (
       <div className="text-center py-20 animate-slide-up">
         <h1 className="text-2xl font-bold text-[#1a1a1a] dark:text-[#fafafa] mb-4">Post Not Found</h1>
-        <p className="text-[#666] dark:text-[#999] mb-8">The article you're looking for doesn't exist.</p>
+        <p className="text-[#666] dark:text-[#999] mb-8">The article you&apos;re looking for doesn&apos;t exist.</p>
         <Link 
           href="/blog" 
           className="inline-flex items-center gap-2 text-[#1a1a1a] dark:text-[#fafafa] hover:text-[#666] transition-colors"

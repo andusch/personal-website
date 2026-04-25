@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 import { formatDate } from "@/utils/helper";
+import type { BlogPost } from "@/lib/notion";
 import { getPublishedPosts } from "@/lib/notion";
 
 export const metadata: Metadata = {
@@ -17,10 +18,11 @@ const fallbackPosts = [
     slug: "future-of-embodied-ai",
     date: "2024-03-15",
     excerpt: "Why robots need bodies to truly understand the world...",
+    published: true,
   },
 ];
 
-function PostCard({ post }: { post: any }) {
+function PostCard({ post }: { post: BlogPost }) {
   return (
     <article className="group py-8 border-b border-[#e5e5e5] dark:border-[#333] last:border-0">
       <Link href={`/blog/${post.slug}`} className="block space-y-3">
@@ -62,17 +64,12 @@ export default async function BlogPage() {
   
   try {
     const notionPosts = await getPublishedPosts();
-    // console.log("Blog page received posts:", notionPosts.length);
     
     if (notionPosts && notionPosts.length > 0) {
       posts = notionPosts;
-      // Log first post for debugging
-      // console.log("First post:", JSON.stringify(notionPosts[0], null, 2));
-    } else {
-      // console.log("No posts from Notion, using fallback");
     }
   } catch (error) {
-    console.log("Error fetching posts, using fallback:", error);
+    console.error("Error fetching blog posts, using fallback:", error);
   }
 
   return (
@@ -86,11 +83,6 @@ export default async function BlogPage() {
           Thoughts on AI, machine learning, robotics, and the intersection of technology and philosophy.
         </p>
       </section>
-
-      {/* Debug info - remove after fixing */}
-      <div className="text-xs text-gray-400 mb-4">
-        Showing {posts.length} posts {posts !== fallbackPosts ? "(from Notion)" : "(fallback)"}
-      </div>
 
       {/* Posts List */}
       <section className="divide-y divide-[#e5e5e5]">

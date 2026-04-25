@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { getBookshelf } from '@/lib/notion';
 import Image from 'next/image';
-import Navbar from '@/components/Navbar';
 import { formatDate } from '@/utils/helper';
 import { Book } from '@/lib/notion';
 
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
   description: 'A collection of books that have shaped my world view.',
 };
 
-const fallbackBooks = [
+const fallbackBooks: Book[] = [
   
   {
     id: '1',
@@ -18,7 +17,7 @@ const fallbackBooks = [
     author: "Dale Carnegie",
     category: "Personal Development",
     rating: 5,
-    readDate: "",
+    readDate: null,
     cover: "https://covers.openlibrary.org/b/id/15200981-L.jpg",
     status: "Finished",
   },
@@ -44,7 +43,7 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-function BookCard({ book }: { book: any }) {
+function BookCard({ book }: { book: Book }) {
   return (
     <article className="group flex gap-6 p-6 rounded-lg bg-white dark:bg-[#1a1a1a] border border-[#e5e5e5] dark:border-[#333] hover:border-[#ccc] dark:hover:border-[#555] transition-colors">
       <div className="flex-shrink-0 w-24 md:w-32 aspect-[2/3] relative overflow-hidden rounded bg-[#f5f5f5] dark:bg-[#2a2a2a]">
@@ -105,7 +104,7 @@ export default async function BookshelfPage() {
       books = notionBooks;
     }
 
-  } catch (error) {
+  } catch {
     console.log("Using fallback book data");
   }
 

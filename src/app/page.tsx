@@ -36,7 +36,7 @@ export default function Home() {
           <div className="relative w-32 h-32 md:w-48 md:h-48">
             <Image
               src="/me.jpg"
-              alt="A picture of me"
+              alt="Portrait placeholder"
               fill
               className="rounded-md object-cover shadow-lg"
               priority
@@ -54,7 +54,7 @@ export default function Home() {
         </h2>
         <GitHubContributions />
         <p className="mt-3 text-sm text-[#666] dark:text-[#999]">
-          <a href="https://github.com/andusch" target="_blank" rel="noopener norefferer" className="link-hover text-[#1a1a1a] dark:text-[#fafafa]">
+          <a href="https://github.com/andusch" target="_blank" rel="noopener noreferrer" className="link-hover text-[#1a1a1a] dark:text-[#fafafa]">
             View profile →
           </a>
         </p>
@@ -70,7 +70,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="link-hover text-[#1a1a1a] dark:text-[#fafafa] font-medium"
-              >Liceul Teoretic "Grigore Moisil" Timisoara </a>.
+              >Liceul Teoretic &quot;Grigore Moisil&quot; Timisoara </a>.
                Hopefully pursuing a Computer Science / Computer Engineering bachelor at {" "}
               <a
               href="https://nus.edu.sg/"

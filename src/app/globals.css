@@ -37,6 +37,26 @@ body {
   font-family: var(--font-sans);
 }
 
+:focus-visible {
+  outline: 2px solid var(--color-foreground);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 1rem;
+  z-index: 100;
+  background: var(--color-foreground);
+  color: var(--color-background);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.skip-link:focus-visible {
+  left: 1rem;
+}
+
 /* Dark mode overrides */
 .dark body {
   background-color: #1a1a1a;
@@ -90,6 +110,37 @@ body {
 .stagger-2 { animation-delay: 0.2s; }
 .stagger-3 { animation-delay: 0.3s; }
 .stagger-4 { animation-delay: 0.4s; }
+
+@keyframes loadingSlide {
+  0% {
+    transform: translateX(-140%);
+  }
+  50% {
+    transform: translateX(120%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+.loading-slide {
+  animation: loadingSlide 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .page-fade,
+  .animate-slide-up,
+  .loading-slide {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
 
 /* Typography refinements */
 .prose-custom {

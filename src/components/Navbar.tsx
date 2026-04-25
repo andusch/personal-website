@@ -15,6 +15,7 @@ const navItems = [
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileMenuId = "mobile-navigation-menu";
 
   const isActive = (path: string) => {
     if (path === "/") {
@@ -60,6 +61,8 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-[#1a1a1a] dark:text-[#fafafa]"
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls={mobileMenuId}
           >
             <svg
               width="20"
@@ -88,7 +91,10 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-6 pb-6 border-b border-[#e5e5e5] dark:border-[#333]">
+        <div
+          id={mobileMenuId}
+          className="md:hidden mt-6 pb-6 border-b border-[#e5e5e5] dark:border-[#333]"
+        >
           <div className="flex flex-col gap-4">
             {navItems.map((item) => (
               <Link

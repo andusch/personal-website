@@ -56,7 +56,6 @@ function extractTitle(properties: any): string {
       return titleArray[0]?.plain_text || "Untitled";
     }
   }
-  console.log("Could not find title in properties:", Object.keys(properties));
   return "Untitled";
 }
 
@@ -101,7 +100,6 @@ function extractSlug(properties: any, fallback: string): string {
 export async function getPublishedPosts() : Promise<BlogPost[]> {
 
   if (!isNotionConfigured()) {
-    console.log("⚠️  Notion not configured, returning empty array");
     return [];
   }
 
@@ -124,13 +122,6 @@ export async function getPublishedPosts() : Promise<BlogPost[]> {
       ],
     });
 
-    // console.log(`Found ${response.results.length} posts in Notion`);
-
-    // if (response.results.length > 0) {
-    //   const firstPost = response.results[0] as any;
-    //   console.log("First post properties:", JSON.stringify(firstPost.properties, null, 2));
-    // }
-
     return response.results.map((page: any) => ({
       id: page.id,
       title: page.properties?.Name?.title?.[0]?.plain_text || "Untitled",
@@ -150,7 +141,6 @@ export async function getPublishedPosts() : Promise<BlogPost[]> {
 export async function getPostContent(slug: string) : Promise<{ title: string; content: string; date: string } | null> {
 
   if (!isNotionConfigured()) {
-    console.log("⚠️  Notion not configured, returning null");
     return null;
   }
 
@@ -191,7 +181,6 @@ export async function getPostContent(slug: string) : Promise<{ title: string; co
 export async function getBookshelf() : Promise<Book[]> {
 
   if (!isNotionConfigured()) {
-    console.log("⚠️  Notion not configured, returning empty array");
     return [];
   }
 
@@ -228,7 +217,6 @@ export async function getBookshelf() : Promise<Book[]> {
 // PROJECTS FUNCTIONS
 export async function getProjects(): Promise<Project[]> {
   if (!isNotionConfigured()) {
-    console.log("⚠️  Notion not configured, returning empty array");
     return [];
   }
 

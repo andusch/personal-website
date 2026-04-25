@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Ioan-Alexandru Scheusan</title>
+  <desc id="desc">Default social preview card for personal website.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#374151" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <text x="80" y="260" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700" fill="#f9fafb">
+    Ioan-Alexandru Scheusan
+  </text>
+  <text x="80" y="330" font-family="Inter, Arial, sans-serif" font-size="36" fill="#d1d5db">
+    Student.Researcher.Builder.
+  </text>
+  <text x="80" y="400" font-family="Inter, Arial, sans-serif" font-size="28" fill="#9ca3af">
+    Personal website - projects, blog, and experiments
+  </text>
+</svg>

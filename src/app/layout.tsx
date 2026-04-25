@@ -18,22 +18,36 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.alexandru-scheusan.com"),
   title: {
     default: 'Ioan-Alexandru Scheusan | Student.Researcher.Builder.',
     template: "%s | Ioan-Alexandru Scheusan",
   },
-  description: 'I enjoy researching AI/ML and building things that solve real problems. Exploring the intersection of computer science, physics, and philosophy.',
+  description: 'I enjoy researching distributed systems and building things that solve real problems. Exploring the intersection of computer science, physics, and philosophy.',
   keywords: ["AI", "Machine Learning", "Developer", "Researcher", "Student", "Computer Science", "Physics", "Philosophy"],
   authors: [{ name: "Ioan-Alexandru Scheusan"}],
   creator: "Ioan-Alexandru Scheusan",
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    // TODO: GET URL
-    url: 'https://www.anduscheusan.com',
+    url: 'https://www.alexandru-scheusan.com',
     siteName: 'Ioan-Alexandru Scheusan',
     title: 'Ioan-Alexandru Scheusan | Student.Researcher.Builder.',
     description: 'I enjoy researching AI/ML and building things that solve real problems. Exploring the intersection of computer science, physics, and philosophy.',
+    images: [
+      {
+        url: "/og-default.svg",
+        width: 1200,
+        height: 630,
+        alt: "Ioan-Alexandru Scheusan personal website",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ioan-Alexandru Scheusan | Student.Researcher.Builder.",
+    description: "I enjoy researching distributed systems and building things that solve real problems.",
+    images: ["/og-default.svg"],
   },
   robots: {
     index: true,
@@ -53,7 +67,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
             <Navbar />
-            <main className="page-fade">
+            <main id="main-content" className="page-fade">
               {children}
             </main>
           </div>

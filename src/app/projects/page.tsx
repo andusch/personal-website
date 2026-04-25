@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import type { Project } from "@/lib/notion";
 import { getProjects } from "@/lib/notion";
 
 export const metadata: Metadata = {
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 // Fallback projects
-const fallbackProjects = [
+const fallbackProjects: Project[] = [
   {
     id: "1",
     title: "Hospital Panic Button System",
@@ -31,15 +32,12 @@ export default async function ProjectsPage() {
   
   try {
     const notionProjects = await getProjects();
-    // console.log("Projects from Notion:", notionProjects);
     
     if (notionProjects && notionProjects.length > 0) {
-      // getProjects() already returns mapped data with title, description, etc.
-      // No need to remap! Use directly:
       projects = notionProjects;
     }
   } catch (error) {
-    console.log("Using fallback project data:", error);
+    console.error("Using fallback project data:", error);
   }
 
   return (
@@ -54,11 +52,6 @@ export default async function ProjectsPage() {
           Each one taught me something new about building things that matter.
         </p>
       </section>
-
-      {/* Debug info - remove after confirming it works */}
-      <div className="text-xs text-gray-400">
-        Showing {projects.length} projects {projects !== fallbackProjects ? "(from Notion)" : "(fallback)"}
-      </div>
 
       {/* Projects Grid */}
       <section className="grid gap-8 md:grid-cols-2">
@@ -118,7 +111,7 @@ export default async function ProjectsPage() {
       <section className="pt-8 border-t border-[#e5e5e5] text-center">
         <p className="text-[#666] dark:text-[#999]" style={{ fontFamily: 'var(--font-lora), serif' }}>
           Interested in collaborating?{" "}
-          <a href="mailto:your.email@example.com" className="text-[#1a1a1a] dark:text-[#fafafa] underline underline-offset-4 hover:text-[#666] transition-colors">
+          <a href="mailto:andu.scheusan@gmail.com" className="text-[#1a1a1a] dark:text-[#fafafa] underline underline-offset-4 hover:text-[#666] transition-colors">
             Let&apos;s talk
           </a>
           .
