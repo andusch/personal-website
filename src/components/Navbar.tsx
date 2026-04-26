@@ -8,6 +8,7 @@ import ThemeToggle from "./ThemeToggle";
 const navItems = [
   { path: "/", label: "About" },
   { path: "/projects", label: "Projects" },
+  { path: "/tech-setup", label: "Setup" },
   { path: "/blog", label: "Blog" },
   { path: "/bookshelf", label: "Bookshelf" },
 ];

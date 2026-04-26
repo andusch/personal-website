@@ -135,10 +135,17 @@ body {
 
   .page-fade,
   .animate-slide-up,
-  .loading-slide {
+  .loading-slide,
+  .bubble-cursor,
+  .bubble-ring {
     animation: none !important;
     opacity: 1;
     transform: none;
+  }
+
+  .bubble-cursor,
+  .bubble-ring {
+    display: none;
   }
 }
 
@@ -192,4 +199,76 @@ body {
 .nav-link-active {
   color: var(--color-foreground);
   font-weight: 500;
+}
+
+/* Bubble cursor */
+.bubble-cursor,
+.bubble-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.2s ease, width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.bubble-cursor {
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  margin-left: -6px;
+  border-radius: 9999px;
+  background: rgba(26, 26, 26, 0.32);
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  backdrop-filter: blur(1px);
+}
+
+.bubble-ring {
+  width: 34px;
+  height: 34px;
+  margin-top: -17px;
+  margin-left: -17px;
+  border-radius: 9999px;
+  border: 1px solid rgba(26, 26, 26, 0.24);
+}
+
+.bubble-visible {
+  opacity: 1;
+}
+
+.bubble-cursor-active {
+  width: 18px;
+  height: 18px;
+  margin-top: -9px;
+  margin-left: -9px;
+  background: rgba(26, 26, 26, 0.22);
+  border-color: rgba(26, 26, 26, 0.34);
+}
+
+.bubble-ring-active {
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  margin-left: -22px;
+  border-color: rgba(26, 26, 26, 0.36);
+}
+
+.dark .bubble-cursor {
+  background: rgba(250, 250, 250, 0.22);
+  border-color: rgba(250, 250, 250, 0.32);
+}
+
+.dark .bubble-ring {
+  border-color: rgba(250, 250, 250, 0.24);
+}
+
+.dark .bubble-cursor-active {
+  background: rgba(250, 250, 250, 0.3);
+  border-color: rgba(250, 250, 250, 0.42);
+}
+
+.dark .bubble-ring-active {
+  border-color: rgba(250, 250, 250, 0.4);
 }

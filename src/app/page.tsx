@@ -102,6 +102,14 @@ export default function Home() {
             I believe in building things that solve real problems. Whether it&apos;s developing 
             computer vision systems for healthcare or creating VR simulations for pilot training, 
             I&apos;m driven by the potential of technology to make a tangible impact on people&apos;s lives.
+            You can also check out my{" "}
+            <Link
+              href="/tech-setup"
+              className="link-hover text-[#1a1a1a] dark:text-[#fafafa] font-medium"
+            >
+              current tech setup
+            </Link>{" "}
+            to see what I use daily.
           </p>
         </div>
       </section>
