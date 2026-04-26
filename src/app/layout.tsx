@@ -20,22 +20,22 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.alexandru-scheusan.com"),
+  metadataBase: new URL("https://www.alexandru-scheusan.vercel.app"),
   title: {
-    default: 'Ioan-Alexandru Scheusan | Student.Researcher.Builder.',
+    default: 'Ioan-Alexandru Scheusan | Student.',
     template: "%s | Ioan-Alexandru Scheusan",
   },
-  description: 'I enjoy researching distributed systems and building things that solve real problems. Exploring the intersection of computer science, physics, and philosophy.',
-  keywords: ["AI", "Machine Learning", "Developer", "Researcher", "Student", "Computer Science", "Physics", "Philosophy"],
+  description: 'I enjoy reading distributed systems research papers and building things that solve real problems. Exploring the intersection of computer science, physics, and philosophy.',
+  keywords: ["Distributed Systems", "Developer", "Student", "Computer Science", "Physics", "Philosophy"],
   authors: [{ name: "Ioan-Alexandru Scheusan"}],
   creator: "Ioan-Alexandru Scheusan",
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.alexandru-scheusan.com',
+    url: 'https://www.alexandru-scheusan.vercel.app',
     siteName: 'Ioan-Alexandru Scheusan',
-    title: 'Ioan-Alexandru Scheusan | Student.Researcher.Builder.',
-    description: 'I enjoy researching AI/ML and building things that solve real problems. Exploring the intersection of computer science, physics, and philosophy.',
+    title: 'Ioan-Alexandru Scheusan | Student.',
+    description: 'I enjoy reading distributed systems research papers and building things that solve real problems. Exploring the intersection of computer science, physics, and philosophy.',
     images: [
       {
         url: "/og-default.svg",
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ioan-Alexandru Scheusan | Student.Researcher.Builder.",
-    description: "I enjoy researching distributed systems and building things that solve real problems.",
+    title: "Ioan-Alexandru Scheusan | Student.",
+    description: "I enjoy reading distributed systems research papers and building things that solve real problems.",
     images: ["/og-default.svg"],
   },
   robots: {

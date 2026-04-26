@@ -22,7 +22,7 @@ export default function Home() {
               Ioan-Alexandru Scheusan
             </h1>
             <p className="text-lg md:text-xl text-[#666] dark:text-[#999] font-medium">
-              Student.Researcher.Builder.
+              Student.
             </p>
           </div>
 
