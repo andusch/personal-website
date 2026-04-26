@@ -4,7 +4,6 @@ import { Inter, Lora} from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import BubbleCursor from "@/components/BubbleCursor";
 
 import { Analytics } from "@vercel/analytics/next"
 
